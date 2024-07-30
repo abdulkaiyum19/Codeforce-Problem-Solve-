@@ -1,3 +1,4 @@
+// IN THE NAME OF ALLAH
 #include<bits/stdc++.h>
 using namespace std;
  
@@ -124,8 +125,25 @@ void faltu( T arg, const hello &... rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-int main (){
-    ll n;
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n;
     cin >> n;
-    cout << 25;
+
+    int arr[n];
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+
+    int max1 = *max_element(arr, arr + n); 
+    int sum = 0;
+
+    for(int i = 0; i < n; i++){
+        sum += max1 - arr[i]; 
+    }
+
+    cout << sum << endl;
+    return 0;
 }

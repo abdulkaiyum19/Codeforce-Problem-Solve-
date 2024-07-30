@@ -124,8 +124,23 @@ void faltu( T arg, const hello &... rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-int main (){
-    ll n;
-    cin >> n;
-    cout << 25;
+int main() {
+    ll N;
+    cin >> N;
+
+    ll min_moves = numeric_limits<ll>::max();
+
+    for (ll i = 1; i * i <= N; ++i) {
+        if (N % i == 0) {
+            ll j = N / i;
+            ll moves = i + j - 2;
+            if (moves < min_moves) {
+                min_moves = moves;
+            }
+        }
+    }
+
+    cout << min_moves << endl;
+
+    return 0;
 }

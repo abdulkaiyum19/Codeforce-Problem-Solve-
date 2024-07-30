@@ -1,3 +1,4 @@
+//IN THE NAME OF ALLAH 
 #include<bits/stdc++.h>
 using namespace std;
  
@@ -125,7 +126,15 @@ void faltu( T arg, const hello &... rest)
     faltu(rest...);
 }
 int main (){
-    ll n;
-    cin >> n;
-    cout << 25;
+    int a, b;
+    cin >> a >> b;
+    if(a>b){
+        cout << b << endl;
+    }
+    else{
+        cout << a << endl;
+    }
+    int ans = abs(a-b);
+
+    cout << ans/2 << endl;
 }

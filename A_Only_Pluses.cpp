@@ -1,3 +1,4 @@
+//IN THE NAME OF ALLAH 
 #include<bits/stdc++.h>
 using namespace std;
  
@@ -124,8 +125,40 @@ void faltu( T arg, const hello &... rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-int main (){
-    ll n;
-    cin >> n;
-    cout << 25;
+void mb(int t, int cases[][3]) {
+    for (int i = 0; i < t; ++i) {
+        int a = cases[i][0];
+        int b = cases[i][1];
+        int c = cases[i][2];
+        
+        int arr[3] = {a, b, c};
+        sort(arr, arr + 3);
+        
+        for (int j = 0; j < 5; ++j) {
+            if (arr[0] <= arr[1] && arr[0] <= arr[2]) {
+                arr[0]++;
+            } else if (arr[1] <= arr[0] && arr[1] <= arr[2]) {
+                arr[1]++;
+            } else {
+                arr[2]++;
+            }
+        }
+        
+        int result = arr[0] * arr[1] * arr[2];
+        cout << result << endl;
+    }
+}
+
+int main() {
+    int t;
+    cin >> t;
+    
+    int cases[t][3];
+    for (int i = 0; i < t; ++i) {
+        cin >> cases[i][0] >> cases[i][1] >> cases[i][2];
+    }
+    
+    mb(t, cases);
+    
+    return 0;
 }

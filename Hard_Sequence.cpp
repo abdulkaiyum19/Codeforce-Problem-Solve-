@@ -124,8 +124,53 @@ void faltu( T arg, const hello &... rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-int main (){
-    ll n;
-    cin >> n;
-    cout << 25;
+void generateSequence(vector<int>& sequence, int length) {
+    sequence.push_back(0);
+    sequence.push_back(0);
+
+    unordered_map<int, int> last_occurrence;
+    last_occurrence[0] = 1;  
+
+    for (int i = 2; i < length; ++i) {
+        int last_element = sequence[i - 1];
+        if (last_occurrence.find(last_element) == last_occurrence.end()) {
+            sequence.push_back(0);
+        } else {
+            int previous_index = last_occurrence[last_element];
+            sequence.push_back(i - previous_index);
+        }
+        last_occurrence[last_element] = i;
+    }
+}
+
+int main() {
+    int T;
+    cin >> T;
+
+    vector<int> test_cases(T);
+    int maxN = 0;
+
+    for (int i = 0; i < T; ++i) {
+        cin >> test_cases[i];
+        if (test_cases[i] > maxN) {
+            maxN = test_cases[i];
+        }
+    }
+
+    vector<int> sequence;
+    generateSequence(sequence, maxN);
+
+    for (int i = 0; i < T; ++i) {
+        int N = test_cases[i];
+        int target = sequence[N - 1];
+        int count = 0;
+        for (int j = 0; j < N; ++j) {
+            if (sequence[j] == target) {
+                ++count;
+            }
+        }
+        cout << count << endl;
+    }
+
+    return 0;
 }
